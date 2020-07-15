@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import moment from 'moment';
 
 import './App.css';
@@ -8,6 +8,9 @@ import Chart from './components/Chart';
 const axios = require('axios');
 
 function App() {
+  let data = [];
+  let labels = [];
+
   const [state, setState] = useState({
     data: [],
     labels: [],
@@ -24,8 +27,6 @@ function App() {
         axios.get('https://shakepay.github.io/programming-exercise/web/transaction_history.json')
         .then(response => {
           let networth = 0; 
-          let data = [];
-          let labels = [];
           response.data.reverse().forEach((element, idx) => {
             if (element.type !== 'conversion') {
               labels.push(moment(element.createdAt).format('YYYY-MM-DD'))
