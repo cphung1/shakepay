@@ -14,6 +14,23 @@ export default function Chart(props) {
             }
           ]
         }}
+        options={{ 
+          maintainAspectRatio: true,
+          scales: {
+            xAxes: [{
+              scaleLabel: {
+                display: true,
+                labelString: 'Date'
+              }
+            }],
+            yAxes: [{
+              scaleLabel: {
+                display: true,
+                labelString: 'Canadians Dollars $'
+              }
+            }]
+          }
+        }}
       />
     </div>
   );
